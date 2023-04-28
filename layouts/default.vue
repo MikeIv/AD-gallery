@@ -20,7 +20,7 @@ export default {
   justify-content: flex-start;
   width: 100%;
   min-height: 100vh;
-  padding-bottom: rem(80);
+  padding-bottom: rem(40);
   &__logo {
     position: fixed;
     top: 0;
@@ -40,11 +40,11 @@ export default {
     width: 100%;
     min-height: 100vh;
     margin: 0 auto;
-    padding: rem(100) rem(12);
+    padding: rem(80) rem(12) rem(20) rem(12);
 
     @media screen and (min-width: $tablet) {
       max-width: rem(768);
-      padding: rem(100) rem(40);
+      padding: rem(80) rem(40);
     }
     @media screen and (min-width: $tabletMax) {
       max-width: rem(832);

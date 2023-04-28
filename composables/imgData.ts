@@ -24,6 +24,14 @@ export const imgData = () => {
       id: '06',
       links: 'https://cdn.ascgroup.ru/news_media/13099/ACH02715.jpg',
     },
+    {
+      id: '07',
+      links: 'https://cdn.ascgroup.ru/news_media/13099/ACH02759.jpg',
+    },
+    {
+      id: '08',
+      links: 'https://cdn.ascgroup.ru/news_media/13099/ACH02838.jpg',
+    },
   ]);
 
   return {

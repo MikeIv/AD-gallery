@@ -1,11 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { resolve } from 'path';
 
+// @ts-ignore
 export default defineNuxtConfig({
   app: {
     head: {
       title: 'Avtodom',
-      meta: [{ name: 'description', content: 'Галлерея' }],
+      meta: [{ name: 'description', content: 'Галерея' }],
       link: [{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }],
     },
   },

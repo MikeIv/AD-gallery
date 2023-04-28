@@ -4,8 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  border-left: 10px solid var(--a-white);
+  min-height: 100vh;
 
   &__logo {
     position: absolute;
@@ -22,6 +21,17 @@
     user-select: none;
   }
 
+  &__button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: rem(20);
+  }
+
+  &__button-switch {
+    margin: 0 rem(8);
+  }
+
   &__gallery {
     display: flex;
     justify-content: center;
@@ -31,19 +41,84 @@
 
     &-list {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: rem(200) rem(200) rem(250);
+      grid-template-columns: 1fr;
+      grid-template-rows: rem(200) rem(250) rem(150) rem(250) repeat(4, 1fr);
       grid-template-areas:
-        'item-01 item-01 item-02'
-        'item-03 item-04 item-02'
-        'item-05 item-05 item-06';
-      gap: 1em;
+        'item-01'
+        'item-02'
+        'item-03'
+        'item-04'
+        'item-05'
+        'item-06'
+        'item-07'
+        'item-08';
+      gap: rem(8);
+
+      @media screen and (min-width: $mobile) {
+        grid-template-columns: 1fr rem(200);
+        grid-template-rows: rem(150) rem(200) rem(150) rem(250) rem(200);
+        grid-template-areas:
+          'item-01 item-02'
+          'item-03 item-03'
+          'item-04 item-05'
+          'item-06 item-06'
+          'item-07 item-08';
+      }
+      @media screen and (min-width: $tabletMax) {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: rem(200) rem(200) rem(250) rem(350);
+        grid-template-areas:
+          'item-01 item-01 item-02'
+          'item-03 item-04 item-02'
+          'item-05 item-05 item-06'
+          'item-07 item-08 item-08';
+      }
+
+      &.next {
+        grid-template-rows: rem(200) rem(300) rem(150) rem(250) repeat(4, 1fr);
+        grid-template-areas:
+          'item-g0'
+          'item-g1'
+          'item-g2'
+          'item-g3'
+          'item-g4'
+          'item-g5'
+          'item-g6'
+          'item-g7';
+        gap: rem(8);
+
+        @media screen and (min-width: $mobile) {
+          grid-template-columns: rem(200) 1fr;
+          grid-template-rows: rem(150) rem(200) rem(150) rem(250) rem(200);
+          grid-template-areas:
+            'item-g0 item-g1'
+            'item-g2 item-g2'
+            'item-g3 item-g4'
+            'item-g5 item-g5'
+            'item-g6 item-g7';
+        }
+        @media screen and (min-width: $tabletMax) {
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-rows: rem(200) rem(200) rem(250) rem(350);
+          grid-template-areas:
+            'item-g0 item-g1 item-g1'
+            'item-g0 item-g2 item-g3'
+            'item-g4 item-g4 item-g5'
+            'item-g6 item-g7 item-g7';
+        }
+      }
     }
 
     &-item {
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
+
+      :hover {
+        opacity: 0.5;
+      }
+
       &.item-01 {
         grid-area: item-01;
       }
@@ -61,6 +136,37 @@
       }
       &.item-06 {
         grid-area: item-06;
+      }
+      &.item-07 {
+        grid-area: item-07;
+      }
+      &.item-08 {
+        grid-area: item-08;
+      }
+
+      &.item-g0 {
+        grid-area: item-g0;
+      }
+      &.item-g1 {
+        grid-area: item-g1;
+      }
+      &.item-g2 {
+        grid-area: item-g2;
+      }
+      &.item-g3 {
+        grid-area: item-g3;
+      }
+      &.item-g4 {
+        grid-area: item-g4;
+      }
+      &.item-g5 {
+        grid-area: item-g5;
+      }
+      &.item-g6 {
+        grid-area: item-g6;
+      }
+      &.item-g7 {
+        grid-area: item-g7;
       }
 
       img {
