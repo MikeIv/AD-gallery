@@ -1,9 +1,6 @@
 <template>
   <div class="layout">
     <Header />
-    <NuxtLink to="/">
-      <img src="~/assets/icons/avtodom.svg" alt="My Logo" class="layout__logo" />
-    </NuxtLink>
 
     <slot />
   </div>
