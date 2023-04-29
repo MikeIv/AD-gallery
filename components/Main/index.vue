@@ -25,41 +25,41 @@
 
     <div class="main__gallery">
       <ul
+        v-if="!setGallery"
         class="main__gallery-list"
-        :class="{ next: setGallery }"
       >
-        <template v-if="!setGallery">
-          <li
-            v-for="item in imgList"
-            :key="item.id"
-            class="main__gallery-item"
-            :class="`item-${item.id}`"
+        <li
+          v-for="item in imgList"
+          :key="item.id"
+          class="main__gallery-item"
+          :class="`item-${item.id}`"
+        >
+          <NuxtLink
+            :to="{ path: '/posts/' + `${item.id}` }"
+            class="main__gallery-link"
           >
-            <NuxtLink
-              :to="{ path: '/posts/' + `${item.id}` }"
-              class="main__gallery-link"
-            >
-              <span class="a-font__s">Подробнее</span>
-            </NuxtLink>
-            <img
-              :src="item.links"
-              alt="image"
-            >
-          </li>
-        </template>
-        <template v-if="!!setGallery">
-          <li
-            v-for="(item, index) in imgListNext"
-            :key="index"
-            class="main__gallery-item"
-            :class="`item-g${index}`"
+            <span class="a-font__s">Подробнее</span>
+          </NuxtLink>
+          <img
+            :src="item.links"
+            alt="image"
           >
-            <img
-              :src="item.links"
-              alt="img"
-            >
-          </li>
-        </template>
+        </li>
+      </ul>
+      <ul
+        v-if="!!setGallery"
+        class="main__gallery-test"
+      >
+        <li
+          v-for="(item, index) in imgListNext"
+          :key="index"
+          class="main__gallery-test-item"
+        >
+          <img
+            :src="item.links"
+            alt="img"
+          >
+        </li>
       </ul>
     </div>
   </section>
