@@ -1,10 +1,5 @@
 <template>
-  <button
-    type="button"
-    :class="classes"
-    :disabled="disabled"
-    @click.prevent.stop="handleClick"
-  >
+  <button type="button" :class="classes" :disabled="disabled" @click.prevent.stop="handleClick">
     <i :class="icons" />
     <slot />
     <span class="a-button__label">{{ label }}</span>
@@ -28,8 +23,8 @@ const props = defineProps({
   },
   onlyIcon: {
     type: String,
-    default: '',
-    validator: (value) => ['rounded', 'square'].includes(value),
+    default: 'none',
+    validator: (value) => ['none', 'rounded', 'square'].includes(value),
   },
   disabled: {
     type: Boolean,
@@ -37,8 +32,8 @@ const props = defineProps({
   },
   size: {
     type: String,
-    default: '',
-    validator: (value) => ['xlarge', 'large', 'medium', 'small'].includes(value),
+    default: 'none',
+    validator: (value) => ['none', 'xlarge', 'large', 'medium', 'small'].includes(value),
   },
   type: {
     type: String,
@@ -47,19 +42,19 @@ const props = defineProps({
   },
   fontSize: {
     type: String,
-    default: '',
-    validator: (value) => ['l', 'm', 's'].includes(value),
+    default: 'none',
+    validator: (value) => ['none', 'l', 'm', 's'].includes(value),
   },
 
   addIcon: {
     type: String,
-    default: '',
-    validator: (value) => ['fonts-icon'].includes(value),
+    default: 'none',
+    validator: (value) => ['none', 'fonts-icon'].includes(value),
   },
   iconPosition: {
     type: String,
-    default: '',
-    validator: (value) => ['left', 'right'].includes(value),
+    default: 'none',
+    validator: (value) => ['none', 'left', 'right'].includes(value),
   },
   iconType: {
     type: String,
