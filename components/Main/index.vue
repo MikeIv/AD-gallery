@@ -35,6 +35,12 @@
             class="main__gallery-item"
             :class="`item-${item.id}`"
           >
+            <NuxtLink
+              :to="{ path: '/posts/' + `${item.id}` }"
+              class="main__gallery-link"
+            >
+              <span class="a-font__s">Подробнее</span>
+            </NuxtLink>
             <img
               :src="item.links"
               alt="image"
