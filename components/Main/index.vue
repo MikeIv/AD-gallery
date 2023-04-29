@@ -1,46 +1,51 @@
 <template>
   <section class="main layout__wrapper">
-    <h1 class="main__title a-font__s hidden">Главная</h1>
+    <h1 class="main__title a-font__s hidden">
+      Главная
+    </h1>
 
     <div class="main__button-wrapper">
       <AButton
-        @handleClick="toggleGalleryFirst"
         class="main__button-switch shadow"
         :class="{ active: setActive.status }"
         label="Галерея 1"
-        bgColor="accent"
-      >
-      </AButton>
+        bg-color="accent"
+        @handleClick="toggleGalleryFirst"
+      />
       <AButton
-        @handleClick="toggleGalleryNext"
         class="main__button-switch shadow"
         :class="{ active: !setActive.status }"
         label="Галерея 2"
-        bgColor="accent"
-      >
-      </AButton>
+        bg-color="accent"
+        @handleClick="toggleGalleryNext"
+      />
     </div>
 
     <div class="main__gallery">
-      <ul class="main__gallery-list" :class="{ next: setGallery }">
-        <li
-          v-if="!setGallery"
-          class="main__gallery-item"
-          :class="`item-${item.id}`"
-          v-for="item in imgList"
-          :key="item.id"
-        >
-          <img :src="item.links" />
-        </li>
-        <li
-          v-if="!!setGallery"
-          class="main__gallery-item"
-          :class="`item-g${index}`"
-          v-for="(item, index) in imgListNext"
-          :key="index"
-        >
-          <img :src="item.links" />
-        </li>
+      <ul
+        class="main__gallery-list"
+        :class="{ next: setGallery }"
+      >
+        <template v-if="!setGallery">
+          <li
+            v-for="item in imgList"
+            :key="item.id"
+            class="main__gallery-item"
+            :class="`item-${item.id}`"
+          >
+            <img :src="item.links">
+          </li>
+        </template>
+        <template v-if="!!setGallery">
+          <li
+            v-for="(item, index) in imgListNext"
+            :key="index"
+            class="main__gallery-item"
+            :class="`item-g${index}`"
+          >
+            <img :src="item.links">
+          </li>
+        </template>
       </ul>
     </div>
   </section>
@@ -68,10 +73,13 @@ const setGallery = ref(false);
 
 const toggleGalleryFirst = () => {
   setActive.status = true;
+  // eslint-disable-next-line
   setGallery.value ? (setGallery.value = false) : '';
 };
+
 const toggleGalleryNext = () => {
   setActive.status = false;
+  // eslint-disable-next-line
   !setGallery.value ? (setGallery.value = true) : '';
 };
 

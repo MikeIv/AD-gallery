@@ -7,7 +7,11 @@
 
   <nav class="main-nav">
     <ul class="main-nav__list">
-      <!--      <NuxtLink class="main-nav__item a-font__h4" :to="localePath('/portfolio')">{{ $t('navigation.portf') }}</NuxtLink>-->
+      <!--
+      <NuxtLink class="main-nav__item a-font__h4" :to="localePath('/portfolio')">
+      {{ $t('navigation.portf') }}
+      </NuxtLink>
+      -->
     </ul>
   </nav>
 </template>
