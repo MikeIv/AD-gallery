@@ -1,5 +1,10 @@
 <template>
-  <button type="button" :class="classes" :disabled="disabled" @click.prevent.stop="handleClick">
+  <button
+    type="button"
+    :class="classes"
+    :disabled="disabled"
+    @click.prevent.stop="handleClick"
+  >
     <i :class="icons" />
     <slot />
     <span class="a-button__label">{{ label }}</span>

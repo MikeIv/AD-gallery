@@ -1,13 +1,15 @@
 <template>
   <section class="main layout__wrapper">
-    <h1 class="main__title a-font__h2">Презентация нового салона
+    <h1 class="main__title a-font__h2">
+      Презентация нового салона
+    </h1>
 
     <div class="main__button-wrapper">
       <AButton
         class="main__button-switch shadow"
         :class="{ active: setActive.status }"
         label="Галерея 1"
-        bgColor="accent"
+        bg-color="accent"
         size="medium"
         @handleClick="toggleGalleryFirst"
       />
@@ -15,22 +17,41 @@
         class="main__button-switch shadow"
         :class="{ active: !setActive.status }"
         label="Галерея 2"
-        bgColor="accent"
+        bg-color="accent"
         size="medium"
         @handleClick="toggleGalleryNext"
       />
     </div>
 
     <div class="main__gallery">
-      <ul class="main__gallery-list" :class="{ next: setGallery }">
+      <ul
+        class="main__gallery-list"
+        :class="{ next: setGallery }"
+      >
         <template v-if="!setGallery">
-          <li v-for="item in imgList" :key="item.id" class="main__gallery-item" :class="`item-${item.id}`">
-            <img :src="item.links" alt="image" />
+          <li
+            v-for="item in imgList"
+            :key="item.id"
+            class="main__gallery-item"
+            :class="`item-${item.id}`"
+          >
+            <img
+              :src="item.links"
+              alt="image"
+            >
           </li>
         </template>
         <template v-if="!!setGallery">
-          <li v-for="(item, index) in imgListNext" :key="index" class="main__gallery-item" :class="`item-g${index}`">
-            <img :src="item.links" alt="img" />
+          <li
+            v-for="(item, index) in imgListNext"
+            :key="index"
+            class="main__gallery-item"
+            :class="`item-g${index}`"
+          >
+            <img
+              :src="item.links"
+              alt="img"
+            >
           </li>
         </template>
       </ul>
