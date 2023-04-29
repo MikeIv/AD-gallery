@@ -1,6 +1,6 @@
 <template>
   <section class="main layout__wrapper">
-    <h1 class="main__title a-font__h2">Презентация нового салона 2</h1>
+    <h1 class="main__title a-font__h2">Презентация нового салона
 
     <div class="main__button-wrapper">
       <AButton
