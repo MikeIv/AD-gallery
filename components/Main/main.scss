@@ -199,8 +199,13 @@
     &-item {
       max-height: rem(500);
       &:nth-of-type(4n) {
-        grid-column: span 2;
+        grid-column: span 1;
+
+        @media screen and (min-width: $mobile) {
+          grid-column: span 2;
+        }
       }
+
       &:nth-of-type(5n) {
         grid-row: span 2;
       }
