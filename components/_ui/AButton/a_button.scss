@@ -147,6 +147,7 @@
     }
     &.active,
     &:active {
+      color: var(--a-white);
       background-color: var(--a-mainAccent);
     }
     &.disabled,

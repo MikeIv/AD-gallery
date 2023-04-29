@@ -3,9 +3,21 @@
     <h1 class="main__title a-font__s hidden">Главная</h1>
 
     <div class="main__button-wrapper">
-      <AButton @handleClick="toggleGalleryFirst" class="main__button-switch shadow" label="Галерея 1" bgColor="accent">
+      <AButton
+        @handleClick="toggleGalleryFirst"
+        class="main__button-switch shadow"
+        :class="{ active: setActive.status }"
+        label="Галерея 1"
+        bgColor="accent"
+      >
       </AButton>
-      <AButton @handleClick="toggleGalleryNext" class="main__button-switch shadow" label="Галерея 2" bgColor="accent">
+      <AButton
+        @handleClick="toggleGalleryNext"
+        class="main__button-switch shadow"
+        :class="{ active: !setActive.status }"
+        label="Галерея 2"
+        bgColor="accent"
+      >
       </AButton>
     </div>
 
@@ -41,14 +53,31 @@ Import ui
 
 import AButton from '~/components/_ui/AButton/a_button.vue';
 
+/*
+Set active tab
+ */
+
+const setActive = reactive({
+  status: true,
+});
+
+/*
+Toggle gallery
+ */
 const setGallery = ref(false);
 
 const toggleGalleryFirst = () => {
+  setActive.status = true;
   setGallery.value ? (setGallery.value = false) : '';
 };
 const toggleGalleryNext = () => {
+  setActive.status = false;
   !setGallery.value ? (setGallery.value = true) : '';
 };
+
+/*
+Get Data
+ */
 
 const { imgLinks } = imgData();
 const imgList = imgLinks.value;
