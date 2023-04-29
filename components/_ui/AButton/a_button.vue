@@ -77,8 +77,8 @@ computed
 
 const classes = computed(() => ({
   'a-button': true,
-  [`a-button--${props.size || 'medium'}`]: true,
-  [`a-button--${props.bgColor}`]: true,
+  [`a-button-s--${props.size || 'medium'}`]: true,
+  [`a-button-bg--${props.bgColor}`]: true,
   [`a-button--${props.addIcon}`]: true,
   [`a-button--${props.onlyIcon}`]: true,
   [`a-button--${props.type}`]: true,
