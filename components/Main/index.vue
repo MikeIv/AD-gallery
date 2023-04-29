@@ -1,45 +1,64 @@
 <template>
   <section class="main layout__wrapper">
-    <h1 class="main__title a-font__s hidden">Главная</h1>
+    <h1 class="main__title a-font__h2">
+      Презентация нового салона
+    </h1>
 
     <div class="main__button-wrapper">
       <AButton
-        @handleClick="toggleGalleryFirst"
         class="main__button-switch shadow"
         :class="{ active: setActive.status }"
         label="Галерея 1"
-        bgColor="accent"
-      >
-      </AButton>
+        bg-color="accent"
+        size="medium"
+        @handleClick="toggleGalleryFirst"
+      />
       <AButton
-        @handleClick="toggleGalleryNext"
         class="main__button-switch shadow"
         :class="{ active: !setActive.status }"
         label="Галерея 2"
-        bgColor="accent"
-      >
-      </AButton>
+        bg-color="accent"
+        size="medium"
+        @handleClick="toggleGalleryNext"
+      />
     </div>
 
     <div class="main__gallery">
-      <ul class="main__gallery-list" :class="{ next: setGallery }">
+      <ul
+        v-if="!setGallery"
+        class="main__gallery-list"
+      >
         <li
-          v-if="!setGallery"
-          class="main__gallery-item"
-          :class="`item-${item.id}`"
           v-for="item in imgList"
           :key="item.id"
-        >
-          <img :src="item.links" />
-        </li>
-        <li
-          v-if="!!setGallery"
           class="main__gallery-item"
-          :class="`item-g${index}`"
+          :class="`item-${item.id}`"
+        >
+          <NuxtLink
+            :to="{ path: '/posts/' + `${item.id}` }"
+            class="main__gallery-link"
+          >
+            <span class="a-font__s">Подробнее</span>
+          </NuxtLink>
+          <img
+            :src="item.links"
+            alt="image"
+          >
+        </li>
+      </ul>
+      <ul
+        v-if="!!setGallery"
+        class="main__gallery-test"
+      >
+        <li
           v-for="(item, index) in imgListNext"
           :key="index"
+          class="main__gallery-test-item"
         >
-          <img :src="item.links" />
+          <img
+            :src="item.links"
+            alt="img"
+          >
         </li>
       </ul>
     </div>
@@ -68,10 +87,13 @@ const setGallery = ref(false);
 
 const toggleGalleryFirst = () => {
   setActive.status = true;
+  // eslint-disable-next-line
   setGallery.value ? (setGallery.value = false) : '';
 };
+
 const toggleGalleryNext = () => {
   setActive.status = false;
+  // eslint-disable-next-line
   !setGallery.value ? (setGallery.value = true) : '';
 };
 

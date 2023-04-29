@@ -32,6 +32,10 @@ export const imgDataNext = () => {
       id: '16',
       links: 'https://cdn.ascgroup.ru/news_media/13099/ACH03096.jpg',
     },
+    {
+      id: '17',
+      links: 'https://cdn.ascgroup.ru/news_media/13099/ACH03096.jpg',
+    },
   ]);
 
   return {

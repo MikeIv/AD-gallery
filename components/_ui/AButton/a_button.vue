@@ -1,7 +1,12 @@
 <template>
-  <button type="button" :class="classes" :disabled="disabled" @click.prevent.stop="handleClick">
-    <i :class="icons"></i>
-    <slot></slot>
+  <button
+    type="button"
+    :class="classes"
+    :disabled="disabled"
+    @click.prevent.stop="handleClick"
+  >
+    <i :class="icons" />
+    <slot />
     <span class="a-button__label">{{ label }}</span>
   </button>
 </template>
@@ -14,14 +19,17 @@ props
 const props = defineProps({
   bgColor: {
     type: String,
+    default: 'accent',
     validator: (value) => ['accent', 'primary', 'secondary', 'ghost-accept'].includes(value),
   },
   label: {
     type: String,
+    default: 'Button',
   },
   onlyIcon: {
     type: String,
-    validator: (value) => ['rounded', 'square'].includes(value),
+    default: 'none',
+    validator: (value) => ['none', 'rounded', 'square'].includes(value),
   },
   disabled: {
     type: Boolean,
@@ -29,7 +37,8 @@ const props = defineProps({
   },
   size: {
     type: String,
-    validator: (value) => ['xlarge', 'large', 'medium', 'small'].includes(value),
+    default: 'none',
+    validator: (value) => ['none', 'xlarge', 'large', 'medium', 'small'].includes(value),
   },
   type: {
     type: String,
@@ -38,19 +47,23 @@ const props = defineProps({
   },
   fontSize: {
     type: String,
-    validator: (value) => ['l', 'm', 's'].includes(value),
+    default: 'none',
+    validator: (value) => ['none', 'l', 'm', 's'].includes(value),
   },
 
   addIcon: {
     type: String,
-    validator: (value) => ['fonts-icon'].includes(value),
+    default: 'none',
+    validator: (value) => ['none', 'fonts-icon'].includes(value),
   },
   iconPosition: {
     type: String,
-    validator: (value) => ['left', 'right'].includes(value),
+    default: 'none',
+    validator: (value) => ['none', 'left', 'right'].includes(value),
   },
   iconType: {
     type: String,
+    default: '',
   },
 });
 
@@ -60,7 +73,6 @@ emit
 
 const emit = defineEmits(['handleClick']);
 const handleClick = () => {
-  console.log('handleClick');
   emit('handleClick');
 };
 
@@ -68,31 +80,21 @@ const handleClick = () => {
 computed
  */
 
-const classes = computed(() => {
-  return {
-    'a-button': true,
-    [`a-button--${props.size || 'medium'}`]: true,
-    [`a-button--${props.bgColor}`]: true,
-    [`a-button--${props.addIcon}`]: true,
-    [`a-button--${props.onlyIcon}`]: true,
-    [`a-button--${props.type}`]: true,
-  };
-});
+const classes = computed(() => ({
+  'a-button': true,
+  [`a-button-s--${props.size || 'medium'}`]: true,
+  [`a-button-bg--${props.bgColor}`]: true,
+  [`a-button--${props.addIcon}`]: true,
+  [`a-button--${props.onlyIcon}`]: true,
+  [`a-button--${props.type}`]: true,
+}));
 
-const fontsize = computed(() => {
-  return {
-    [`a-font__btn-${props.fontSize}`]: true,
-  };
-});
-
-const icons = computed(() => {
-  return {
-    'a-button__icon': true,
-    [`a-button__icon--${props.addIcon}`]: true,
-    [`a-button__icon--${props.iconPosition}`]: true,
-    [`${props.iconType}`]: true,
-  };
-});
+const icons = computed(() => ({
+  'a-button__icon': true,
+  [`a-button__icon--${props.addIcon}`]: true,
+  [`a-button__icon--${props.iconPosition}`]: true,
+  [`${props.iconType}`]: true,
+}));
 </script>
 
 <style scoped lang="scss">
